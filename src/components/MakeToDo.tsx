@@ -18,7 +18,7 @@ function MakeToDo() {
 
   return (
     <MakeToDoContainer>
-      <BoxStyle bgColor={theme.color.mainBg} className="make-to-do" content="Todays To Do">
+      <BoxStyle bgColor={theme.color.mainBg} className="make-to-do">
         <div>
           <FontAwesomeIcon icon={faLemon} className="icon" />
           <input placeholder="할일을 입력해주세요" value={inputToDo} onChange={handleInput} />
@@ -38,6 +38,7 @@ const MakeToDoContainer = styled.div`
     font-size: 18px;
   }
   button {
+    padding: 0px;
     margin-right: 20px;
     &:hover {
       cursor: pointer;

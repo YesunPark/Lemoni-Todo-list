@@ -6,7 +6,7 @@ import { theme } from '../assets/styles/theme';
 
 function Title() {
   return (
-    <BoxStyle bgColor={theme.color.mainBg} className="title" content="Todays To Do">
+    <BoxStyle bgColor={theme.color.mainBg} className="title">
       <div>
         <FontAwesomeIcon icon={faLemon} className="icon" />
         <div>Todays To Do</div>
