@@ -1,12 +1,19 @@
 import React from 'react';
-import styled from 'styled-components'
+import styled from 'styled-components';
+import Title from 'components/Title';
 
 function App() {
-  return <><TitleContainer></TitleContainer></>;
+  return (
+    <AppContainer>
+      <Title />
+    </AppContainer>
+  );
 }
 
-const TitleContainer = styled.div`
-  
-`
+const AppContainer = styled.section`
+  width: 370px;
+  height: 650px;
+  background-color: #ffffff;
+`;
 
 export default App;
