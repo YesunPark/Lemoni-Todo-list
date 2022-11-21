@@ -8,6 +8,11 @@ const theme: DefaultTheme = {
     txt: '#303030',
     grayTxt: '#00000030',
   },
+  size: {
+    listHeight: '65px',
+    iconLeft: '30px',
+    iconRight: '23px',
+  },
 };
 
 export { theme };

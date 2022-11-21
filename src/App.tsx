@@ -1,11 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 import Title from 'components/Title';
+import List from 'components/List';
 
 function App() {
   return (
     <AppContainer>
       <Title />
+      <List />
     </AppContainer>
   );
 }

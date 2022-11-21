@@ -13,6 +13,8 @@ const GlobalStyle = createGlobalStyle`
     align-items: center;
     height: 100vh;
     background-color: #F2F2F2;
+    color:${(props) => props.theme.color.txt};
+    font-size: 18px;
     font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
   }
   input, button {
