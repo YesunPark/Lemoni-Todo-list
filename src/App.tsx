@@ -2,12 +2,14 @@ import React from 'react';
 import styled from 'styled-components';
 import Title from 'components/Title';
 import List from 'components/List';
+import MakeToDo from 'components/MakeToDo';
 
 function App() {
   return (
     <AppContainer>
       <Title />
       <List />
+      <MakeToDo />
     </AppContainer>
   );
 }
