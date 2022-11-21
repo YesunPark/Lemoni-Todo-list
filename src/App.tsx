@@ -15,6 +15,7 @@ function App() {
 }
 
 const AppContainer = styled.section`
+  position: relative;
   width: 370px;
   height: 650px;
   background-color: #ffffff;

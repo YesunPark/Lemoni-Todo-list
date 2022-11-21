@@ -18,7 +18,10 @@ function BoxStyle({ bgColor, className, children }: Box) {
 
 const TitleContainer = styled.div`
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  position: ${(props) => props.className === 'make-to-do' && 'absolute'};
+  bottom: ${(props) => props.className === 'make-to-do' && '0px'};
+  width: inherit;
   height: ${(props) => props.theme.size.listHeight};
   background-color: ${(props) => props.color};
   border-bottom: ${(props) => props.className === 'list' && `1px solid ${props.theme.color.main}`};
@@ -27,6 +30,10 @@ const TitleContainer = styled.div`
     margin: 0 9px 0 18.8px;
     color: ${(props) => props.theme.color.main};
     font-size: ${(props) => props.theme.size.iconLeft};
+  }
+  div {
+    align-items: center;
+    display: flex;
   }
 `;
 

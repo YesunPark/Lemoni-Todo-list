@@ -7,8 +7,10 @@ import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 function List() {
   return (
     <BoxStyle className="list" content="설거지하기">
-      <FontAwesomeIcon icon={faSquareCheck} className="icon" />
-      <div>설거지하기</div>
+      <div>
+        <FontAwesomeIcon icon={faSquareCheck} className="icon" />
+        <div>설거지하기</div>
+      </div>
     </BoxStyle>
   );
 }

@@ -7,8 +7,10 @@ import { theme } from '../assets/styles/theme';
 function Title() {
   return (
     <BoxStyle bgColor={theme.color.mainBg} className="title" content="Todays To Do">
-      <FontAwesomeIcon icon={faLemon} className="icon" />
-      <div>Todays To Do</div>
+      <div>
+        <FontAwesomeIcon icon={faLemon} className="icon" />
+        <div>Todays To Do</div>
+      </div>
     </BoxStyle>
   );
 }
