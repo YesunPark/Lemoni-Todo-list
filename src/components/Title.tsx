@@ -7,7 +7,7 @@ function Title() {
 
 const TitleContainer = styled.div`
   height: 65px;
-  background-color: ${(props) => props.theme.mainBgColor};
+  background-color: ${(props) => props.theme.color.mainBg};
 `;
 
 export default Title;
