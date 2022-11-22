@@ -33,6 +33,9 @@ function MakeToDo() {
             placeholder="할일을 입력해주세요"
             value={inputToDo}
             onChange={handleInput}
+            onKeyDown={(e) => {
+              e.key === 'Enter' && clickSaveBtn();
+            }}
             size={20}
             maxLength={12}
           />
