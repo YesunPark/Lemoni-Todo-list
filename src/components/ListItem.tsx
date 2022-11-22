@@ -24,7 +24,7 @@ function ListItem() {
 
 const ListContainer = styled.div`
   .icon {
-    color: ${(props) => (props.id === 'false' ? props.theme.color.main : 'green')};
+    color: ${(props) => (props.id === 'false' ? props.theme.color.main : '#91D086')};
   }
   .content {
     color: ${(props) => (props.id === 'false' ? props.theme.color.txt : props.theme.color.grayTxt)};
