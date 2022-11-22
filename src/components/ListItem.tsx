@@ -29,10 +29,10 @@ function ListItem({ content }: ListItem) {
 
 const ListContainer = styled.div`
   .icon {
-    color: ${(props) => (props.id === 'false' ? props.theme.color.main : '#91D086')};
+    color: ${(props) => props.id === 'true' && '#91D086'};
   }
   .content {
-    color: ${(props) => (props.id === 'false' ? props.theme.color.txt : props.theme.color.grayTxt)};
+    color: ${(props) => props.id === 'true' && props.theme.color.grayTxt};
   }
 `;
 
