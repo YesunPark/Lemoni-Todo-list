@@ -33,6 +33,18 @@ function ListItem({ content, idx }: ListItem) {
     beingModify ? setBeingModify(false) : setBeingModify(true);
   }
 
+  function clickSaveModify() {
+    setListArr(
+      listArr.map((list, idx) => {
+        if (list.idx !== listArr[idx].idx) {
+          return list;
+        } else {
+          return { ...list, content: inputContent };
+        }
+      }),
+    );
+  }
+
   function clickDelete() {
     setListArr(listArr.filter((list) => list.idx !== idx));
   }
@@ -59,14 +71,27 @@ function ListItem({ content, idx }: ListItem) {
             maxLength={12}
           />
         </div>
-        <div>
-          <FontAwesomeIcon
-            onClick={clickModify}
-            icon={faPencil}
-            className={`icon small ${checked}`}
-          />
-          <FontAwesomeIcon onClick={clickDelete} icon={faTrashCan} className="icon small" />
-        </div>
+        {!beingModify && (
+          <div>
+            <FontAwesomeIcon
+              onClick={clickModify}
+              icon={faPencil}
+              className={`icon small ${checked}`}
+            />
+            <FontAwesomeIcon onClick={clickDelete} icon={faTrashCan} className="icon small" />
+          </div>
+        )}
+        {beingModify && (
+          <button
+            className="save-modify"
+            onClick={() => {
+              setBeingModify(false);
+              clickSaveModify();
+            }}
+          >
+            수정완료
+          </button>
+        )}
       </BoxStyle>
     </ListContainer>
   );
@@ -90,6 +115,15 @@ const ListContainer = styled.div`
     font-size: ${(props) => props.theme.size.iconRight};
     margin: 0px 20px 0px 0px;
   }
+  .save-modify {
+    padding: 0px;
+    margin: 0px 15px 0px 0px;
+    font-size: 18px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   input {
     color: ${(props) => props.theme.color.txt};
     font-size: 18px;
