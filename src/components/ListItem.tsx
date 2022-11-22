@@ -42,7 +42,7 @@ function ListItem({ content }: ListItem) {
             onChange={handleInput}
             disabled={beingModify ? false : true}
             autoComplete="off"
-            size={23}
+            size={20}
           />
         </div>
         <div>
