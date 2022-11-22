@@ -29,11 +29,11 @@ function ListItem({ content, idx }: ListItem) {
     setInputContent(e.target.value);
   }
 
-  function clickModify() {
+  function clickModifyBtn() {
     beingModify ? setBeingModify(false) : setBeingModify(true);
   }
 
-  function clickSaveModify() {
+  function clickSaveModifyBtn() {
     setListArr(
       listArr.map((list, idx) => {
         if (list.idx !== listArr[idx].idx) {
@@ -74,7 +74,7 @@ function ListItem({ content, idx }: ListItem) {
         {!beingModify && (
           <div>
             <FontAwesomeIcon
-              onClick={clickModify}
+              onClick={clickModifyBtn}
               icon={faPencil}
               className={`icon small ${checked}`}
             />
@@ -86,7 +86,7 @@ function ListItem({ content, idx }: ListItem) {
             className="save-modify"
             onClick={() => {
               setBeingModify(false);
-              clickSaveModify();
+              clickSaveModifyBtn();
             }}
           >
             수정완료
