@@ -7,7 +7,7 @@ function FullList() {
   return (
     <>
       {listArr.map((list) => {
-        return <ListItem key={list} />;
+        return <ListItem content={'코딩하기'} key={list} />;
       })}
     </>
   );

@@ -4,7 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import styled from 'styled-components';
 
-function ListItem() {
+type ListItem = {
+  content: string;
+  key: number;
+};
+
+function ListItem({ content }: ListItem) {
   const [checked, setChecked] = useState(false);
   function clickCheckBox() {
     setChecked(!checked);
@@ -15,7 +20,7 @@ function ListItem() {
       <BoxStyle className="list">
         <div className="checkbox" onClick={clickCheckBox}>
           <FontAwesomeIcon icon={faSquareCheck} className="icon" />
-          <div className="content">설거지하기</div>
+          <div className="content">{content}</div>
         </div>
       </BoxStyle>
     </ListContainer>
