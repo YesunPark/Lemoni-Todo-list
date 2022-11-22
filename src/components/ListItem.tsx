@@ -50,6 +50,7 @@ function ListItem({ content, idx }: ListItem) {
             disabled={beingModify ? false : true}
             autoComplete="off"
             size={20}
+            maxLength={12}
           />
         </div>
         <div>
