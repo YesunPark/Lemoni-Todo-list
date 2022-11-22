@@ -12,11 +12,19 @@ type ListItem = {
 
 function ListItem({ content }: ListItem) {
   const [checked, setChecked] = useState('no-checked');
-  const [inputContent, setInputContent] = useState('코딩');
+  const [beingModify, setBeingModify] = useState(false);
+  const [inputContent, setInputContent] = useState(content);
 
   function clickCheckBox() {
-    checked === 'checked' ? setChecked('no-checked') : setChecked('checked');
+    if (!beingModify) {
+      checked === 'checked' ? setChecked('no-checked') : setChecked('checked');
+    }
   }
+
+  function clickModify() {
+    beingModify ? setBeingModify(false) : setBeingModify(true);
+  }
+
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setInputContent(e.target.value);
   }
@@ -26,17 +34,23 @@ function ListItem({ content }: ListItem) {
       <BoxStyle className="list-item">
         <div className="checkbox" onClick={clickCheckBox}>
           <FontAwesomeIcon icon={faSquareCheck} className="icon" />
-          {/* <div className="content">{content}</div> */}
           <input
             type="text"
             id="content"
-            className={checked}
+            className={`${checked} ${beingModify && 'modifying'}`}
             value={inputContent}
             onChange={handleInput}
-          ></input>
+            disabled={beingModify ? false : true}
+            autoComplete="off"
+            size={23}
+          />
         </div>
         <div>
-          <FontAwesomeIcon icon={faPencil} className={`icon small ${checked}`} />
+          <FontAwesomeIcon
+            onClick={clickModify}
+            icon={faPencil}
+            className={`icon small ${checked}`}
+          />
           <FontAwesomeIcon icon={faTrashCan} className="icon small" />
         </div>
       </BoxStyle>
@@ -60,10 +74,8 @@ const ListContainer = styled.div`
     margin: 0px 20px 0px 0px;
   }
   input {
+    color: ${(props) => props.theme.color.txt};
     font-size: 18px;
-    &::placeholder {
-      color: ${(props) => props.theme.color.txt};
-    }
     &.checked {
     }
   }
