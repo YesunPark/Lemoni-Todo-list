@@ -52,6 +52,7 @@ function ListItem({ content, idx }: ListItem) {
             className={`content ${checked} ${beingModify && 'modifying'}`}
             value={inputContent}
             onChange={handleInput}
+            onKeyDown={(e) => e.key === 'Enter' && setBeingModify(false)}
             disabled={beingModify ? false : true}
             autoComplete="off"
             size={20}
