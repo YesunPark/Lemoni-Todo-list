@@ -5,11 +5,11 @@ import { useRecoilState } from 'recoil'; // 훅 import
 
 function FullList() {
   const [listArr] = useRecoilState(toDoArrState);
-  console.log(listArr);
+
   return (
     <>
-      {listArr.map((list, idx) => {
-        return <ListItem content={list.content} key={list.idx} idx={idx} />;
+      {listArr.map((list) => {
+        return <ListItem content={list.content} key={list.idx} idx={list.idx} />;
       })}
     </>
   );

@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
-import BoxStyle from './Box.Style';
+import { toDoArrState } from '../atom';
+import { useRecoilState } from 'recoil';
+import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
-import styled from 'styled-components';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
+import BoxStyle from './Box.Style';
 
 type ListItem = {
   content: string;
@@ -11,6 +13,7 @@ type ListItem = {
 };
 
 function ListItem({ content, idx }: ListItem) {
+  const [listArr, setListArr] = useRecoilState(toDoArrState);
   const [checked, setChecked] = useState('no-checked');
   const [beingModify, setBeingModify] = useState(false);
   const [inputContent, setInputContent] = useState(content);
@@ -28,6 +31,10 @@ function ListItem({ content, idx }: ListItem) {
 
   function clickModify() {
     beingModify ? setBeingModify(false) : setBeingModify(true);
+  }
+
+  function clickDelete() {
+    setListArr(listArr.filter((list) => list.idx !== idx));
   }
 
   useEffect(() => {
@@ -57,7 +64,7 @@ function ListItem({ content, idx }: ListItem) {
             icon={faPencil}
             className={`icon small ${checked}`}
           />
-          <FontAwesomeIcon icon={faTrashCan} className="icon small" />
+          <FontAwesomeIcon onClick={clickDelete} icon={faTrashCan} className="icon small" />
         </div>
       </BoxStyle>
     </ListContainer>

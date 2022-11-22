@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { toDoArrState } from '../atom';
+import { useRecoilState } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLemon } from '@fortawesome/free-solid-svg-icons';
-import { toDoArrState } from '../atom'; // atom으로 만든 전역상태
-import { useRecoilState } from 'recoil'; // 훅 import
 import BoxStyle from './Box.Style';
 import { theme } from '../assets/styles/theme';
 
@@ -16,7 +16,11 @@ function MakeToDo() {
   }
 
   function clickSaveBtn() {
-    setListArr([...listArr, { idx: listArr.length, content: inputToDo }]);
+    if (listArr.length) {
+      setListArr([...listArr, { idx: listArr[listArr.length - 1].idx + 1, content: inputToDo }]);
+    } else if (!listArr.length) {
+      setListArr([...listArr, { idx: 0, content: inputToDo }]);
+    }
     setInputToDo('');
   }
 
