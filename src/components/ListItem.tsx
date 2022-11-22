@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import styled from 'styled-components';
 
-function List() {
+function ListItem() {
   const [checked, setChecked] = useState(false);
   function clickCheckBox() {
     setChecked(!checked);
@@ -31,4 +31,4 @@ const ListContainer = styled.div`
   }
 `;
 
-export default List;
+export default ListItem;
