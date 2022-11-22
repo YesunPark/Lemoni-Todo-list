@@ -25,7 +25,7 @@ function ListItem({ content }: ListItem) {
         </div>
         <div>
           <FontAwesomeIcon icon={faPencil} className={`icon small ${checked}`} />
-          <FontAwesomeIcon icon={faTrashCan} className="icon small delete" />
+          <FontAwesomeIcon icon={faTrashCan} className="icon small" />
         </div>
       </BoxStyle>
     </ListContainer>
@@ -42,13 +42,10 @@ const ListContainer = styled.div`
   }
   .small {
     font-size: ${(props) => props.theme.size.iconRight};
-    margin: 0px;
+    margin: 0px 20px 0px 0px;
   }
   .checked {
     display: none;
-  }
-  .delete {
-    margin: 0px 20px 0px 20px;
   }
 `;
 
