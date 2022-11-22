@@ -38,6 +38,7 @@ const ListContainer = styled.div`
   }
   .content {
     color: ${(props) => props.id === 'checked' && props.theme.color.grayTxt};
+    text-decoration: ${(props) => props.id === 'checked' && 'line-through'};
   }
   .small {
     font-size: ${(props) => props.theme.size.iconRight};
