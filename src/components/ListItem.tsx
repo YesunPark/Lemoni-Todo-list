@@ -78,6 +78,9 @@ const ListContainer = styled.div`
     &.checked {
       display: none;
     }
+    &:hover {
+      cursor: pointer;
+    }
   }
   .content {
     color: ${(props) => props.id === 'checked' && props.theme.color.grayTxt};
