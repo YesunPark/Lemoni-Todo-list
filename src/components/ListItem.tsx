@@ -29,10 +29,6 @@ function ListItem({ content, idx }: ListItem) {
     setInputContent(e.target.value);
   }
 
-  function clickModifyBtn() {
-    beingModify ? setBeingModify(false) : setBeingModify(true);
-  }
-
   function clickSaveModifyBtn() {
     setListArr(
       listArr.map((list, idx) => {
@@ -74,7 +70,7 @@ function ListItem({ content, idx }: ListItem) {
         {!beingModify && (
           <div>
             <FontAwesomeIcon
-              onClick={clickModifyBtn}
+              onClick={() => setBeingModify(true)}
               icon={faPencil}
               className={`icon small ${checked}`}
             />
