@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 type Box = {
   bgColor?: string;
-  className: string;
+  className?: string;
   children: React.ReactNode;
 };
 
