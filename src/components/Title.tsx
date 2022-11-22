@@ -9,7 +9,7 @@ function Title() {
     <BoxStyle bgColor={theme.color.mainBg} className="title">
       <div>
         <FontAwesomeIcon icon={faLemon} className="icon" />
-        <div>Todays To Do</div>
+        <div>Lemoni To Do</div>
       </div>
     </BoxStyle>
   );
