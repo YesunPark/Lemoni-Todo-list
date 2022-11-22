@@ -25,7 +25,13 @@ function MakeToDo() {
       <BoxStyle bgColor={theme.color.mainBg} className="make-to-do">
         <div>
           <FontAwesomeIcon icon={faLemon} className="icon" />
-          <input placeholder="할일을 입력해주세요" value={inputToDo} onChange={handleInput} />
+          <input
+            placeholder="할일을 입력해주세요"
+            value={inputToDo}
+            onChange={handleInput}
+            size={20}
+            maxLength={12}
+          />
         </div>
         <button onClick={clickSaveBtn}>저장</button>
       </BoxStyle>
