@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import BoxStyle from './Box.Style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
@@ -7,10 +7,9 @@ import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 type ListItem = {
   content: string;
-  idx: number;
 };
 
-function ListItem({ content, idx }: ListItem) {
+function ListItem({ content }: ListItem) {
   const [checked, setChecked] = useState('no-checked');
   const [beingModify, setBeingModify] = useState(false);
   const [inputContent, setInputContent] = useState(content);
@@ -22,17 +21,17 @@ function ListItem({ content, idx }: ListItem) {
     }
   }
 
+  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputContent(e.target.value);
+  }
+
   function clickModify() {
     beingModify ? setBeingModify(false) : setBeingModify(true);
   }
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (inputRef.current !== null) inputRef.current.focus();
-  });
-
-  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
-    setInputContent(e.target.value);
-  }
+  }, [beingModify]);
 
   return (
     <ListContainer id={checked}>
@@ -42,8 +41,6 @@ function ListItem({ content, idx }: ListItem) {
           <input
             ref={inputRef}
             type="text"
-            id={idx.toLocaleString()}
-            name="content"
             className={`content ${checked} ${beingModify && 'modifying'}`}
             value={inputContent}
             onChange={handleInput}
@@ -84,8 +81,6 @@ const ListContainer = styled.div`
   input {
     color: ${(props) => props.theme.color.txt};
     font-size: 18px;
-    &.checked {
-    }
   }
 `;
 
