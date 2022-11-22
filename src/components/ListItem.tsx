@@ -12,8 +12,13 @@ type ListItem = {
 
 function ListItem({ content }: ListItem) {
   const [checked, setChecked] = useState('no-checked');
+  const [inputContent, setInputContent] = useState('코딩');
+
   function clickCheckBox() {
     checked === 'checked' ? setChecked('no-checked') : setChecked('checked');
+  }
+  function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
+    setInputContent(e.target.value);
   }
 
   return (
@@ -21,7 +26,14 @@ function ListItem({ content }: ListItem) {
       <BoxStyle className="list-item">
         <div className="checkbox" onClick={clickCheckBox}>
           <FontAwesomeIcon icon={faSquareCheck} className="icon" />
-          <div className="content">{content}</div>
+          {/* <div className="content">{content}</div> */}
+          <input
+            type="text"
+            id="content"
+            className={checked}
+            value={inputContent}
+            onChange={handleInput}
+          ></input>
         </div>
         <div>
           <FontAwesomeIcon icon={faPencil} className={`icon small ${checked}`} />
@@ -35,6 +47,9 @@ function ListItem({ content }: ListItem) {
 const ListContainer = styled.div`
   .icon {
     color: ${(props) => props.id === 'checked' && '#91D086'};
+    &.checked {
+      display: none;
+    }
   }
   .content {
     color: ${(props) => props.id === 'checked' && props.theme.color.grayTxt};
@@ -44,8 +59,13 @@ const ListContainer = styled.div`
     font-size: ${(props) => props.theme.size.iconRight};
     margin: 0px 20px 0px 0px;
   }
-  .checked {
-    display: none;
+  input {
+    font-size: 18px;
+    &::placeholder {
+      color: ${(props) => props.theme.color.txt};
+    }
+    &.checked {
+    }
   }
 `;
 
