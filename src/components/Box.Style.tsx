@@ -23,7 +23,8 @@ const TitleContainer = styled.div`
   width: inherit;
   height: ${(props) => props.theme.size.listHeight};
   background-color: ${(props) => props.color};
-  border-bottom: ${(props) => props.className === 'list' && `1px solid ${props.theme.color.main}`};
+  border-bottom: ${(props) =>
+    props.className === 'list-item' && `1px solid ${props.theme.color.main}`};
   color: ${(props) => props.theme.color.txt};
   font-size: ${(props) => props.className === 'title' && '30px'};
   .icon {

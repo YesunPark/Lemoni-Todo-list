@@ -3,6 +3,7 @@ import BoxStyle from './Box.Style';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import styled from 'styled-components';
+import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 type ListItem = {
   content: string;
@@ -10,17 +11,21 @@ type ListItem = {
 };
 
 function ListItem({ content }: ListItem) {
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState('no-checked');
   function clickCheckBox() {
-    setChecked(!checked);
+    checked === 'checked' ? setChecked('no-checked') : setChecked('checked');
   }
 
   return (
-    <ListContainer id={checked.toString()}>
-      <BoxStyle className="list">
+    <ListContainer id={checked}>
+      <BoxStyle className="list-item">
         <div className="checkbox" onClick={clickCheckBox}>
           <FontAwesomeIcon icon={faSquareCheck} className="icon" />
           <div className="content">{content}</div>
+        </div>
+        <div>
+          <FontAwesomeIcon icon={faPencil} className={`icon small ${checked}`} />
+          <FontAwesomeIcon icon={faTrashCan} className="icon small delete" />
         </div>
       </BoxStyle>
     </ListContainer>
@@ -29,10 +34,20 @@ function ListItem({ content }: ListItem) {
 
 const ListContainer = styled.div`
   .icon {
-    color: ${(props) => props.id === 'true' && '#91D086'};
+    color: ${(props) => props.id === 'checked' && '#91D086'};
   }
   .content {
-    color: ${(props) => props.id === 'true' && props.theme.color.grayTxt};
+    color: ${(props) => props.id === 'checked' && props.theme.color.grayTxt};
+  }
+  .small {
+    font-size: ${(props) => props.theme.size.iconRight};
+    margin: 0px;
+  }
+  .checked {
+    display: none;
+  }
+  .delete {
+    margin: 0px 20px 0px 20px;
   }
 `;
 
