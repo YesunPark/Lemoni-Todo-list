@@ -7,9 +7,10 @@ import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 
 type ListItem = {
   content: string;
+  idx: number;
 };
 
-function ListItem({ content }: ListItem) {
+function ListItem({ content, idx }: ListItem) {
   const [checked, setChecked] = useState('no-checked');
   const [beingModify, setBeingModify] = useState(false);
   const [inputContent, setInputContent] = useState(content);

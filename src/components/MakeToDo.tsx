@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLemon } from '@fortawesome/free-solid-svg-icons';
+import { toDoArrState } from '../atom'; // atom으로 만든 전역상태
+import { useRecoilState } from 'recoil'; // 훅 import
 import BoxStyle from './Box.Style';
 import { theme } from '../assets/styles/theme';
 
 function MakeToDo() {
+  const [listArr, setListArr] = useRecoilState(toDoArrState);
   const [inputToDo, setInputToDo] = useState('');
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -13,7 +16,8 @@ function MakeToDo() {
   }
 
   function clickSaveBtn() {
-    return;
+    setListArr([...listArr, { idx: listArr.length, content: inputToDo }]);
+    setInputToDo('');
   }
 
   return (

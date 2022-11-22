@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
 
-export const toDoArr = atom({
+export const toDoArrState = atom<{ idx: number; content: string }[]>({
   key: 'toDoArrState',
   default: [],
 });
