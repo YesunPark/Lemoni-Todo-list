@@ -65,6 +65,7 @@ function ListItem({ content, idx }: ListItem) {
             autoComplete="off"
             size={20}
             maxLength={12}
+            spellCheck="false"
           />
         </div>
         {!beingModify && (

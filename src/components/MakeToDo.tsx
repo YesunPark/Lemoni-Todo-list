@@ -38,6 +38,7 @@ function MakeToDo() {
             }}
             size={20}
             maxLength={12}
+            spellCheck="false"
           />
         </div>
         <button onClick={clickSaveBtn}>저장</button>
