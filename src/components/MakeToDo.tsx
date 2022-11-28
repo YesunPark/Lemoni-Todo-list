@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
 import { toDoArrState } from '../atom';
 import { useRecoilState } from 'recoil';
@@ -10,6 +10,7 @@ import { theme } from '../assets/styles/theme';
 function MakeToDo() {
   const [listArr, setListArr] = useRecoilState(toDoArrState);
   const [inputToDo, setInputToDo] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
     setInputToDo(e.target.value);
@@ -30,6 +31,7 @@ function MakeToDo() {
         <div>
           <FontAwesomeIcon icon={faLemon} className="icon" />
           <input
+            ref={inputRef}
             placeholder="할일을 입력해주세요"
             value={inputToDo}
             onChange={handleInput}
@@ -41,7 +43,14 @@ function MakeToDo() {
             spellCheck="false"
           />
         </div>
-        <button onClick={clickSaveBtn}>저장</button>
+        <button
+          onClick={() => {
+            clickSaveBtn();
+            if (inputRef.current !== null) inputRef.current.focus();
+          }}
+        >
+          저장
+        </button>
       </BoxStyle>
     </MakeToDoContainer>
   );
