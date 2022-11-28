@@ -20,7 +20,7 @@ function FullList() {
 
 const FullListContainer = styled.div`
   height: 520px;
-  overflow: scroll;
+  overflow-y: auto;
 `;
 
 export default FullList;
