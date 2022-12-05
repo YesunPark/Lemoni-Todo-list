@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
 import BoxStyle from './Box.Style';
+import DeleteModal from './DeleteModal';
 
 type ListItem = {
   content: string;
@@ -17,6 +18,7 @@ function ListItem({ content, idx }: ListItem) {
   const [checked, setChecked] = useState('no-checked');
   const [beingModify, setBeingModify] = useState(false);
   const [inputContent, setInputContent] = useState(content);
+  const [modalShow, setModalShow] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function clickCheckBox() {
@@ -42,7 +44,8 @@ function ListItem({ content, idx }: ListItem) {
   }
 
   function clickDelete() {
-    setListArr(listArr.filter((list) => list.idx !== idx));
+    setModalShow(true);
+    // setListArr(listArr.filter((list) => list.idx !== idx));
   }
 
   useEffect(() => {
@@ -89,6 +92,7 @@ function ListItem({ content, idx }: ListItem) {
             수정완료
           </button>
         )}
+        <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
       </BoxStyle>
     </ListContainer>
   );

@@ -5,6 +5,7 @@ import GlobalStyle from 'assets/styles/global-styles';
 import { RecoilRoot } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import App from './App';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { theme } from 'assets/styles/theme';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
