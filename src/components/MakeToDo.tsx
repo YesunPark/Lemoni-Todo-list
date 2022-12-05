@@ -32,7 +32,7 @@ function MakeToDo() {
           <FontAwesomeIcon icon={faLemon} className="icon" />
           <input
             ref={inputRef}
-            placeholder="할일을 입력해주세요"
+            placeholder="할 일을 입력해주세요"
             value={inputToDo}
             onChange={handleInput}
             onKeyPress={(e) => {
