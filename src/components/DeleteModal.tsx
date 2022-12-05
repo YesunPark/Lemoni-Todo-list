@@ -2,8 +2,16 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
+import { toDoArrState } from '../atom';
+import { useRecoilState } from 'recoil';
 
 function DeleteModal(props: any) {
+  const [listArr, setListArr] = useRecoilState(toDoArrState);
+
+  function handleDelete() {
+    setListArr(listArr.filter((list) => list.idx !== props.idx));
+  }
+
   return (
     <Modal {...props} size="sm" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Body>
@@ -16,7 +24,7 @@ function DeleteModal(props: any) {
           <Button className="btn" onClick={props.onHide}>
             취소
           </Button>
-          <Button className="btn" onClick={props.onHide}>
+          <Button className="btn" onClick={handleDelete}>
             확인
           </Button>
         </Modal.Footer>

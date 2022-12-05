@@ -18,7 +18,7 @@ function ListItem({ content, idx }: ListItem) {
   const [checked, setChecked] = useState('no-checked');
   const [beingModify, setBeingModify] = useState(false);
   const [inputContent, setInputContent] = useState(content);
-  const [modalShow, setModalShow] = useState(false);
+  const [deleteModalShow, setDeleteModalShow] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function clickCheckBox() {
@@ -43,9 +43,8 @@ function ListItem({ content, idx }: ListItem) {
     );
   }
 
-  function clickDelete() {
-    setModalShow(true);
-    // setListArr(listArr.filter((list) => list.idx !== idx));
+  function clickDeleteBtn() {
+    setDeleteModalShow(true);
   }
 
   useEffect(() => {
@@ -78,7 +77,7 @@ function ListItem({ content, idx }: ListItem) {
               icon={faPencil}
               className={`icon small ${checked}`}
             />
-            <FontAwesomeIcon onClick={clickDelete} icon={faTrashCan} className="icon small" />
+            <FontAwesomeIcon onClick={clickDeleteBtn} icon={faTrashCan} className="icon small" />
           </div>
         )}
         {beingModify && (
@@ -92,7 +91,7 @@ function ListItem({ content, idx }: ListItem) {
             수정완료
           </button>
         )}
-        <DeleteModal show={modalShow} onHide={() => setModalShow(false)} />
+        <DeleteModal idx={idx} show={deleteModalShow} onHide={() => setDeleteModalShow(false)} />
       </BoxStyle>
     </ListContainer>
   );
