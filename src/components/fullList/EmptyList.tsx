@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import BoxStyle from './styles/Box.Style';
+import BoxStyle from '../styles/Box.Style';
 
 function EmptyList() {
   return (

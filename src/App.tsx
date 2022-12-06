@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Title from 'components/Title';
-import FullList from 'components/FullList';
-import MakeToDo from 'components/MakeToDo';
+import Title from 'components/title/Title';
+import FullList from 'components/fullList/FullList';
+import MakeToDo from 'components/makeToDo/MakeToDo';
 
 function App() {
   return (

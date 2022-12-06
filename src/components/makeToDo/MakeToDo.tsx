@@ -1,11 +1,11 @@
 import React, { useRef, useState } from 'react';
 import styled from 'styled-components';
-import { toDoArrState } from '../atom';
+import { toDoArrState } from '../../atom';
 import { useRecoilState } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLemon } from '@fortawesome/free-solid-svg-icons';
-import BoxStyle from './styles/Box.Style';
-import { theme } from '../assets/styles/theme';
+import BoxStyle from '../styles/Box.Style';
+import { theme } from '../../assets/styles/theme';
 
 function MakeToDo() {
   const [listArr, setListArr] = useRecoilState(toDoArrState);
