@@ -2,7 +2,7 @@ import React from 'react';
 import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
-import { toDoArrState } from '../atom';
+import { toDoArrState } from '../../atom';
 import { useRecoilState } from 'recoil';
 
 function DeleteModal(props: any) {

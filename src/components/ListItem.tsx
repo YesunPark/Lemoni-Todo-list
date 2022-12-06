@@ -5,8 +5,8 @@ import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSquareCheck } from '@fortawesome/free-regular-svg-icons';
 import { faPencil, faTrashCan } from '@fortawesome/free-solid-svg-icons';
-import BoxStyle from './Box.Style';
-import DeleteModal from './DeleteModal';
+import BoxStyle from './styles/Box.Style';
+import DeleteModal from './modals/DeleteModal';
 
 type ListItem = {
   content: string;
