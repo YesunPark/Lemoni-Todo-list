@@ -4,12 +4,14 @@ import { toDoArrState } from '../../atom';
 import { useRecoilState } from 'recoil';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLemon } from '@fortawesome/free-solid-svg-icons';
+import EmptyInputModal from 'components/modals/EmptyInputModal';
 import BoxStyle from '../styles/Box.Style';
 import { theme } from '../../assets/styles/theme';
 
 function MakeToDo() {
   const [listArr, setListArr] = useRecoilState(toDoArrState);
   const [inputToDo, setInputToDo] = useState('');
+  const [showEmptyInputModal, setShowEmptyInputModal] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
 
   function handleInput(e: React.ChangeEvent<HTMLInputElement>) {
@@ -25,6 +27,10 @@ function MakeToDo() {
     setInputToDo('');
   }
 
+  function handleEmptyInputModal() {
+    setShowEmptyInputModal(true);
+  }
+
   return (
     <MakeToDoContainer>
       <BoxStyle bgColor={theme.color.mainBg} className="make-to-do">
@@ -36,7 +42,9 @@ function MakeToDo() {
             value={inputToDo}
             onChange={handleInput}
             onKeyPress={(e) => {
-              e.key === 'Enter' && clickSaveBtn();
+              if (e.key === 'Enter') {
+                inputToDo !== '' ? clickSaveBtn() : handleEmptyInputModal();
+              }
             }}
             size={20}
             maxLength={12}
@@ -45,13 +53,14 @@ function MakeToDo() {
         </div>
         <button
           onClick={() => {
-            clickSaveBtn();
+            inputToDo !== '' ? clickSaveBtn() : handleEmptyInputModal();
             if (inputRef.current !== null) inputRef.current.focus();
           }}
         >
           저장
         </button>
       </BoxStyle>
+      <EmptyInputModal show={showEmptyInputModal} onHide={() => setShowEmptyInputModal(false)} />
     </MakeToDoContainer>
   );
 }
