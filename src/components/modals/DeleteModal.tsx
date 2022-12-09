@@ -5,7 +5,13 @@ import styled from 'styled-components';
 import { toDoArrState } from '../../atom';
 import { useRecoilState } from 'recoil';
 
-function DeleteModal(props: any) {
+type DeleteModal = {
+  idx: number;
+  show: boolean;
+  onHide: () => void;
+};
+
+function DeleteModal(props: DeleteModal) {
   const [listArr, setListArr] = useRecoilState(toDoArrState);
 
   function handleDelete() {

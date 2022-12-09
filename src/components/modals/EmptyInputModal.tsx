@@ -3,7 +3,12 @@ import Modal from 'react-bootstrap/Modal';
 import { Button } from 'react-bootstrap';
 import styled from 'styled-components';
 
-function EmptyInputModal(props: any) {
+type EmptyInputModal = {
+  show: boolean;
+  onHide: () => void;
+};
+
+function EmptyInputModal(props: EmptyInputModal) {
   return (
     <Modal {...props} size="sm" aria-labelledby="contained-modal-title-vcenter" centered>
       <Modal.Body>
