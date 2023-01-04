@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { toDoArrState } from '../../atom';
 import { useRecoilState } from 'recoil';
 import styled from 'styled-components';
@@ -31,7 +31,16 @@ function ListItem({ content, idx }: ListItem) {
     setInputContent(e.target.value);
   }
 
+  function clickModifyBtn() {
+    setBeingModify(true);
+    if (inputRef.current !== null) {
+      inputRef.current.disabled = false;
+      inputRef.current.focus();
+    }
+  }
+
   function clickSaveModifyBtn() {
+    setBeingModify(false);
     setListArr(
       listArr.map((list, idx) => {
         if (list.idx !== listArr[idx].idx) {
@@ -46,10 +55,6 @@ function ListItem({ content, idx }: ListItem) {
   function clickDeleteBtn() {
     setDeleteModalShow(true);
   }
-
-  useEffect(() => {
-    if (inputRef.current !== null) inputRef.current.focus();
-  }, [beingModify]);
 
   return (
     <ListContainer id={checked}>
@@ -73,7 +78,7 @@ function ListItem({ content, idx }: ListItem) {
         {!beingModify && (
           <div>
             <FontAwesomeIcon
-              onClick={() => setBeingModify(true)}
+              onClick={clickModifyBtn}
               icon={faPencil}
               className={`icon small ${checked}`}
             />
@@ -81,13 +86,7 @@ function ListItem({ content, idx }: ListItem) {
           </div>
         )}
         {beingModify && (
-          <button
-            className="save-modify"
-            onClick={() => {
-              setBeingModify(false);
-              clickSaveModifyBtn();
-            }}
-          >
+          <button className="save-modify" onClick={clickSaveModifyBtn}>
             수정완료
           </button>
         )}
