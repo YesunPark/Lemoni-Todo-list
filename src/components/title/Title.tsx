@@ -6,7 +6,7 @@ import { theme } from '../../assets/styles/theme';
 import styled from 'styled-components';
 
 function Title() {
-  const today = `${new Date().getFullYear()}-${new Date().getMonth() + 1}-${new Date().getDate()}`;
+  const today = new Date(+new Date() + 3240 * 10000).toISOString().split('T')[0];
   const [pickedDate, setPickedDate] = useState(today);
   const handleDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     setPickedDate(e.target.value);
